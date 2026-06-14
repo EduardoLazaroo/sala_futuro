@@ -1,0 +1,23 @@
+<div class="page">
+  <div class="page-header">
+    <div><h1>📂 Materiais de Apoio</h1><p>Gerencie seus materiais</p></div>
+    <button class="btn-novo" (click)="novo()">+ Novo Material</button>
+  </div>
+  <div class="lista-vazia" *ngIf="!materiais.length"><p>Nenhum material cadastrado</p></div>
+  <div class="tabela-container" *ngIf="materiais.length">
+    <table class="tabela">
+      <thead><tr><th>Título</th><th>Data Publicação</th><th>Disciplina</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let m of materiais">
+          <td>{{ m.titulo }}</td>
+          <td>{{ m.data_publicacao | date:'dd/MM/yyyy' }}</td>
+          <td>{{ m.disciplina_nome || '-' }}</td>
+          <td class="acoes">
+            <button class="btn-acao editar" (click)="editar(m.id)">✏️</button>
+            <button class="btn-acao excluir" (click)="excluir(m.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

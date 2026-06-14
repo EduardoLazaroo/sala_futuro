@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>📅 Eventos</h1>
+      <p>Gerencie seus eventos acadêmicos</p>
+    </div>
+    <button class="btn-novo" (click)="novo()">+ Novo Evento</button>
+  </div>
+
+  <div class="lista-vazia" *ngIf="!eventos.length">
+    <p>Nenhum evento cadastrado</p>
+  </div>
+
+  <div class="tabela-container" *ngIf="eventos.length">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Data</th>
+          <th>Horário</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of eventos">
+          <td>{{ e.titulo }}</td>
+          <td>{{ e.data | date:'dd/MM/yyyy' }}</td>
+          <td>{{ e.horario || '-' }}</td>
+          <td>
+            <span class="badge" [class]="'badge-' + e.status.toLowerCase().replace(' ', '-')">{{ e.status }}</span>
+          </td>
+          <td class="acoes">
+            <button class="btn-acao editar" (click)="editar(e.id)" title="Editar">✏️</button>
+            <button class="btn-acao excluir" (click)="excluir(e.id)" title="Excluir">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

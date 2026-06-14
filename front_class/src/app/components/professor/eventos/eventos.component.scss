@@ -1,0 +1,40 @@
+.page-header {
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;
+  h1 { color: #fff; font-size: 1.8rem; margin: 0 0 5px; }
+  p { color: #a0a0b0; margin: 0; }
+}
+
+.btn-novo {
+  padding: 12px 24px; background: #e94560; color: #fff; border: none; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.3s;
+  &:hover { background: #c73652; }
+}
+
+.lista-vazia {
+  background: rgba(255,255,255,0.03); border-radius: 12px; padding: 40px; text-align: center;
+  p { color: #666; }
+}
+
+.tabela-container { overflow-x: auto; }
+
+.tabela {
+  width: 100%; border-collapse: collapse;
+  th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  th { color: #a0a0b0; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+  td { color: #e0e0e0; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+}
+
+.badge {
+  display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+}
+.badge-agendado { background: rgba(51,154,240,0.2); color: #339af0; }
+.badge-em-andamento { background: rgba(255,193,7,0.2); color: #ffc107; }
+.badge-finalizado { background: rgba(81,207,102,0.2); color: #51cf66; }
+.badge-cancelado { background: rgba(255,107,107,0.2); color: #ff6b6b; }
+
+.acoes { display: flex; gap: 8px; }
+.btn-acao {
+  background: none; border: none; cursor: pointer; font-size: 1.1rem; padding: 4px;
+  &:hover { transform: scale(1.2); }
+}

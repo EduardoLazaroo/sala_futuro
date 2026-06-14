@@ -1,0 +1,18 @@
+.page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px}
+.page-header h1{color:#fff;font-size:1.8rem;margin:0 0 5px}.page-header p{color:#a0a0b0;margin:0}
+.btn-voltar{padding:10px 20px;background:rgba(255,255,255,.08);color:#a0a0b0;border:1px solid rgba(255,255,255,.1);border-radius:8px;cursor:pointer;font-size:.9rem}
+.btn-voltar:hover{background:rgba(255,255,255,.12)}
+.form-data{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.form-data label{color:#c0a0d0;font-size:.9rem}.form-data input{padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:.9rem;outline:none}
+.form-data input:focus{border-color:#e94560}
+.tabela-container{overflow-x:auto}.tabela{width:100%;border-collapse:collapse}
+.tabela th,.tabela td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06)}
+.tabela th{color:#a0a0b0;font-weight:600;font-size:.8rem;text-transform:uppercase}.tabela td{color:#e0e0e0}
+.tabela tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:600}
+.presente{background:rgba(81,207,102,.2);color:#51cf66}.ausente{background:rgba(255,107,107,.2);color:#ff6b6b}
+.pendente{background:rgba(160,160,176,.2);color:#a0a0b0}
+.btn-toggle{padding:6px 14px;background:rgba(233,69,96,.15);color:#e94560;border:1px solid rgba(233,69,96,.3);border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600}
+.btn-toggle:hover{background:rgba(233,69,96,.25)}
+.lista-vazia{background:rgba(255,255,255,.03);border-radius:12px;padding:40px;text-align:center}
+.lista-vazia p{color:#666}

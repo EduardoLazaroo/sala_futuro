@@ -1,0 +1,24 @@
+<div class="page">
+  <div class="page-header">
+    <div><h1>📚 Disciplinas</h1><p>Gerencie suas disciplinas</p></div>
+    <button class="btn-novo" (click)="novo()">+ Nova Disciplina</button>
+  </div>
+  <div class="lista-vazia" *ngIf="!disciplinas.length"><p>Nenhuma disciplina cadastrada</p></div>
+  <div class="tabela-container" *ngIf="disciplinas.length">
+    <table class="tabela">
+      <thead><tr><th>Nome</th><th>Carga Horária</th><th>Status</th><th>Professor</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let d of disciplinas">
+          <td>{{ d.nome }}</td>
+          <td>{{ d.carga_horaria }}h</td>
+          <td><span class="badge" [class.badge-ativa]="d.status==='Ativa'" [class.badge-inativa]="d.status==='Inativa'">{{ d.status }}</span></td>
+          <td>{{ d.professor_nome || '-' }}</td>
+          <td class="acoes">
+            <button class="btn-acao editar" (click)="editar(d.id)">✏️</button>
+            <button class="btn-acao excluir" (click)="excluir(d.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

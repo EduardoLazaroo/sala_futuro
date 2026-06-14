@@ -1,0 +1,17 @@
+<div class="page">
+  <div class="page-header"><h1>📝 Minhas Notas</h1><p>Visualize suas notas</p></div>
+  <div class="lista-vazia" *ngIf="!notas.length"><p>Nenhuma nota registrada</p></div>
+  <div class="tabela-container" *ngIf="notas.length">
+    <table class="tabela">
+      <thead><tr><th>Disciplina</th><th>Turma</th><th>Nota</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let n of notas">
+          <td>{{ n.disciplina_nome }}</td>
+          <td>{{ n.turma_nome }}</td>
+          <td><strong class="nota-valor">{{ n.valor }}</strong></td>
+          <td>{{ n.observacao || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

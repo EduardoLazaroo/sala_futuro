@@ -1,0 +1,12 @@
+<div class="page">
+  <div class="page-header"><h1>📢 Avisos</h1><p>Visualize os avisos publicados</p></div>
+  <div class="lista-vazia" *ngIf="!avisos.length"><p>Nenhum aviso publicado</p></div>
+  <div class="cards-eventos" *ngIf="avisos.length">
+    <div class="card-evento" *ngFor="let a of avisos">
+      <h3>{{ a.titulo }}</h3>
+      <p class="aviso-conteudo">{{ a.conteudo }}</p>
+      <p>📅 {{ a.data_publicacao | date:'dd/MM/yyyy' }}</p>
+      <p *ngIf="a.professor_nome">👨‍🏫 {{ a.professor_nome }}</p>
+    </div>
+  </div>
+</div>

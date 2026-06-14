@@ -1,0 +1,27 @@
+<div class="page">
+  <div class="page-header">
+    <div><h1>👥 Turmas</h1><p>Gerencie suas turmas</p></div>
+    <button class="btn-novo" (click)="novo()">+ Nova Turma</button>
+  </div>
+  <div class="lista-vazia" *ngIf="!turmas.length"><p>Nenhuma turma cadastrada</p></div>
+  <div class="tabela-container" *ngIf="turmas.length">
+    <table class="tabela">
+      <thead><tr><th>Nome</th><th>Descrição</th><th>Status</th><th>Alunos</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let t of turmas">
+          <td>{{ t.nome }}</td>
+          <td>{{ t.descricao || '-' }}</td>
+          <td><span class="badge" [class.badge-ativa]="t.status==='Ativa'" [class.badge-inativa]="t.status==='Inativa'">{{ t.status }}</span></td>
+          <td>{{ t.total_alunos || 0 }}</td>
+          <td class="acoes">
+            <button class="btn-acao" (click)="verAlunos(t.id)" title="Alunos">👥</button>
+            <button class="btn-acao" (click)="verNotas(t.id)" title="Notas">📝</button>
+            <button class="btn-acao" (click)="verFrequencia(t.id)" title="Frequência">✅</button>
+            <button class="btn-acao editar" (click)="editar(t.id)" title="Editar">✏️</button>
+            <button class="btn-acao excluir" (click)="excluir(t.id)" title="Excluir">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<aside class="menu-lateral">
+  <div class="menu-header">
+    <h2>📚 Sala Futuro</h2>
+    <span class="user-nome">{{ nome }}</span>
+    <span class="user-tipo">{{ tipo === 'professor' ? 'Professor' : 'Aluno' }}</span>
+  </div>
+
+  <nav class="menu-nav">
+    <a
+      *ngFor="let item of itens"
+      [routerLink]="item.rota"
+      routerLinkActive="ativo"
+      class="menu-item"
+    >
+      <span class="menu-icon">{{ item.icon }}</span>
+      <span class="menu-label">{{ item.label }}</span>
+    </a>
+  </nav>
+
+  <div class="menu-footer">
+    <button class="btn-logout" (click)="logout()">🚪 Sair</button>
+  </div>
+</aside>

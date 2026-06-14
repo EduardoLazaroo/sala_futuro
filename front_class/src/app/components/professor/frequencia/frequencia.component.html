@@ -1,0 +1,36 @@
+<div class="page">
+  <div class="page-header">
+    <div><h1>✅ Frequência - {{ turma.nome }}</h1><p>Registre a presença dos alunos</p></div>
+    <button class="btn-voltar" (click)="voltar()">← Voltar</button>
+  </div>
+
+  <div class="form-data">
+    <label>Data:</label>
+    <input type="date" [(ngModel)]="data" />
+  </div>
+
+  <div class="lista-vazia" *ngIf="!alunos.length"><p>Nenhum aluno matriculado nesta turma</p></div>
+
+  <div class="tabela-container" *ngIf="alunos.length">
+    <table class="tabela">
+      <thead><tr><th>Aluno</th><th>RA</th><th>Status</th><th>Ação</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let a of alunos">
+          <td>{{ a.nome }}</td>
+          <td>{{ a.ra }}</td>
+          <td>
+            <span *ngIf="getFrequenciaAluno(a.id)" class="badge" [class.presente]="getFrequenciaAluno(a.id)?.presente" [class.ausente]="!getFrequenciaAluno(a.id)?.presente">
+              {{ getFrequenciaAluno(a.id)?.presente ? 'Presente' : 'Ausente' }}
+            </span>
+            <span *ngIf="!getFrequenciaAluno(a.id)" class="badge pendente">—</span>
+          </td>
+          <td>
+            <button class="btn-toggle" (click)="togglePresenca(a.id)">
+              {{ getFrequenciaAluno(a.id)?.presente ? 'Marcar Ausente' : 'Marcar Presente' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

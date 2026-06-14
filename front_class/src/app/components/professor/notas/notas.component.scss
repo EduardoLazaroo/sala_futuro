@@ -1,0 +1,21 @@
+.page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px}
+.page-header h1{color:#fff;font-size:1.8rem;margin:0 0 5px}.page-header p{color:#a0a0b0;margin:0}
+.btn-voltar{padding:10px 20px;background:rgba(255,255,255,.08);color:#a0a0b0;border:1px solid rgba(255,255,255,.1);border-radius:8px;cursor:pointer;font-size:.9rem}
+.btn-voltar:hover{background:rgba(255,255,255,.12)}
+.form-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px;margin-bottom:30px}
+.form-card h3{color:#fff;font-size:1.1rem;margin:0 0 16px}
+.form-group{margin-bottom:0}.form-group label{display:block;color:#c0c0d0;margin-bottom:6px;font-size:.85rem}
+.form-group input,.form-group select{width:100%;padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:.9rem;outline:none;box-sizing:border-box}
+.form-group input:focus,.form-group select:focus{border-color:#e94560}
+.form-row{display:grid;grid-template-columns:2fr 2fr 1fr 2fr;gap:12px}
+.form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+.form-actions button{padding:10px 24px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;border:none}
+.btn-cancelar{background:rgba(255,255,255,.08);color:#a0a0b0}.btn-cancelar:hover{background:rgba(255,255,255,.12)}
+.btn-salvar{background:#e94560;color:#fff}.btn-salvar:hover{background:#c73652}
+.tabela-container{overflow-x:auto}.tabela{width:100%;border-collapse:collapse}
+.tabela th,.tabela td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06)}
+.tabela th{color:#a0a0b0;font-weight:600;font-size:.8rem;text-transform:uppercase}.tabela td{color:#e0e0e0}
+.tabela tr:hover td{background:rgba(255,255,255,.02)}.acoes{display:flex;gap:8px}
+.btn-acao{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:4px}.btn-acao:hover{transform:scale(1.2)}
+.lista-vazia{background:rgba(255,255,255,.03);border-radius:12px;padding:40px;text-align:center}
+.lista-vazia p{color:#666}

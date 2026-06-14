@@ -1,0 +1,52 @@
+<div class="page">
+  <div class="page-header">
+    <div><h1>📝 Notas - {{ turma.nome }}</h1><p>Lance e gerencie notas dos alunos</p></div>
+    <button class="btn-voltar" (click)="voltar()">← Voltar</button>
+  </div>
+
+  <div class="form-card">
+    <h3>{{ editando ? 'Editar Nota' : 'Nova Nota' }}</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Aluno *</label>
+        <select [(ngModel)]="aluno_id"><option [ngValue]="null">-- Selecione --</option><option *ngFor="let a of alunos" [ngValue]="a.id">{{ a.nome }} ({{ a.ra }})</option></select>
+      </div>
+      <div class="form-group">
+        <label>Disciplina *</label>
+        <select [(ngModel)]="disciplina_id"><option [ngValue]="null">-- Selecione --</option><option *ngFor="let d of disciplinas" [ngValue]="d.id">{{ d.nome }}</option></select>
+      </div>
+      <div class="form-group">
+        <label>Nota *</label>
+        <input type="number" [(ngModel)]="valor" min="0" max="10" step="0.1" placeholder="0-10" />
+      </div>
+      <div class="form-group">
+        <label>Observação</label>
+        <input type="text" [(ngModel)]="observacao" placeholder="Opcional" />
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-cancelar" *ngIf="editando" (click)="limpar()">Cancelar</button>
+      <button class="btn-salvar" (click)="salvar()">{{ editando ? 'Atualizar' : 'Salvar' }}</button>
+    </div>
+  </div>
+
+  <div class="tabela-container" *ngIf="notas.length">
+    <table class="tabela">
+      <thead><tr><th>Aluno</th><th>RA</th><th>Disciplina</th><th>Nota</th><th>Obs</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let n of notas">
+          <td>{{ n.aluno_nome }}</td>
+          <td>{{ n.ra }}</td>
+          <td>{{ n.disciplina_nome }}</td>
+          <td><strong>{{ n.valor }}</strong></td>
+          <td>{{ n.observacao || '-' }}</td>
+          <td class="acoes">
+            <button class="btn-acao editar" (click)="editar(n)">✏️</button>
+            <button class="btn-acao excluir" (click)="excluir(n.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="lista-vazia" *ngIf="!notas.length"><p>Nenhuma nota registrada</p></div>
+</div>

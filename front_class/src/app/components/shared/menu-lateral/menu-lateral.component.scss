@@ -1,0 +1,94 @@
+.menu-lateral {
+  width: 260px;
+  height: 100vh;
+  background: #1a1a2e;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.menu-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  h2 {
+    color: #e94560;
+    font-size: 1.3rem;
+    margin: 0 0 12px;
+  }
+
+  .user-nome {
+    display: block;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .user-tipo {
+    display: block;
+    color: #a0a0b0;
+    font-size: 0.8rem;
+    margin-top: 2px;
+  }
+}
+
+.menu-nav {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #c0c0d0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+
+  &:hover {
+    background: rgba(233, 69, 96, 0.1);
+    color: #fff;
+  }
+
+  &.ativo {
+    background: rgba(233, 69, 96, 0.2);
+    color: #e94560;
+    font-weight: 600;
+  }
+}
+
+.menu-icon {
+  font-size: 1.2rem;
+}
+
+.menu-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #a0a0b0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(233, 69, 96, 0.15);
+    color: #e94560;
+    border-color: #e94560;
+  }
+}

@@ -1,0 +1,16 @@
+.page-header{margin-bottom:30px}.page-header h1{color:#fff;font-size:1.8rem;margin:0 0 5px}.page-header p{color:#a0a0b0;margin:0}
+.cards-resumo{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:40px}
+.card-resumo{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px;display:flex;align-items:center;gap:16px}
+.card-resumo .card-icon{font-size:2.5rem}.card-resumo .card-valor{display:block;color:#fff;font-size:2rem;font-weight:700}
+.card-resumo .card-label{color:#a0a0b0;font-size:.9rem}.card-resumo.turmas{border-left:4px solid #e94560}
+.card-resumo.disciplinas{border-left:4px solid #339af0}
+.duas-colunas{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.secao h2{color:#fff;font-size:1.3rem;margin-bottom:16px}
+.lista-vazia{background:rgba(255,255,255,.03);border-radius:12px;padding:40px;text-align:center}
+.lista-vazia p{color:#666}.cards-eventos{display:flex;flex-direction:column;gap:12px}
+.card-evento{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px}
+.card-evento h3{color:#fff;font-size:1rem;margin:8px 0 4px}.card-evento p{color:#a0a0b0;font-size:.85rem}
+.aviso-prof{color:#e94560!important;font-size:.8rem}
+.evento-status{display:inline-block;padding:3px 8px;border-radius:20px;font-size:.7rem;font-weight:600;text-transform:uppercase}
+.status-agendado{background:rgba(51,154,240,.2);color:#339af0}.status-em-andamento{background:rgba(255,193,7,.2);color:#ffc107}
+.status-finalizado{background:rgba(81,207,102,.2);color:#51cf66}.status-cancelado{background:rgba(255,107,107,.2);color:#ff6b6b}

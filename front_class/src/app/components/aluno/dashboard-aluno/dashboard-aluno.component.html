@@ -1,0 +1,40 @@
+<div class="page">
+  <div class="page-header"><h1>📊 Dashboard</h1><p>Visão geral da sua área</p></div>
+
+  <div class="cards-resumo">
+    <div class="card-resumo turmas">
+      <div class="card-icon">👥</div>
+      <div class="card-info"><span class="card-valor">{{ dashboard.total_turmas }}</span><span class="card-label">Turmas</span></div>
+    </div>
+    <div class="card-resumo disciplinas">
+      <div class="card-icon">📚</div>
+      <div class="card-info"><span class="card-valor">{{ dashboard.total_disciplinas }}</span><span class="card-label">Disciplinas</span></div>
+    </div>
+  </div>
+
+  <div class="duas-colunas">
+    <div class="secao">
+      <h2>📅 Próximos Eventos</h2>
+      <div class="lista-vazia" *ngIf="!dashboard.proximos_eventos?.length"><p>Nenhum evento próximo</p></div>
+      <div class="cards-eventos" *ngIf="dashboard.proximos_eventos?.length">
+        <div class="card-evento" *ngFor="let e of dashboard.proximos_eventos">
+          <span class="evento-status" [class]="'status-'+e.status.toLowerCase().replace(' ','-')">{{ e.status }}</span>
+          <h3>{{ e.titulo }}</h3>
+          <p>📅 {{ e.data | date:'dd/MM/yyyy' }} <span *ngIf="e.horario">às {{ e.horario }}</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="secao">
+      <h2>📢 Últimos Avisos</h2>
+      <div class="lista-vazia" *ngIf="!dashboard.ultimos_avisos?.length"><p>Nenhum aviso recente</p></div>
+      <div class="cards-eventos" *ngIf="dashboard.ultimos_avisos?.length">
+        <div class="card-evento" *ngFor="let a of dashboard.ultimos_avisos">
+          <h3>{{ a.titulo }}</h3>
+          <p class="aviso-prof" *ngIf="a.professor_nome">Por: {{ a.professor_nome }}</p>
+          <p>📅 {{ a.data_publicacao | date:'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

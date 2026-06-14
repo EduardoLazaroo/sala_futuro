@@ -1,0 +1,40 @@
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>👥 Alunos da Turma: {{ turma.nome }}</h1>
+      <p>Adicione ou remova alunos desta turma</p>
+    </div>
+    <button class="btn-voltar" (click)="voltar()">← Voltar</button>
+  </div>
+
+  <div class="duas-colunas">
+    <div class="coluna">
+      <h2>Alunos Matriculados ({{ alunosMatriculados.length }})</h2>
+      <div class="lista-vazia" *ngIf="!alunosMatriculados.length"><p>Nenhum aluno matriculado</p></div>
+      <div class="lista-alunos">
+        <div class="aluno-item" *ngFor="let a of alunosMatriculados">
+          <div class="aluno-info">
+            <strong>{{ a.nome }}</strong>
+            <span>RA: {{ a.ra }}</span>
+          </div>
+          <button class="btn-remover" (click)="remover(a.id)">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="coluna">
+      <h2>Adicionar Alunos</h2>
+      <input type="text" class="input-filtro" [(ngModel)]="filtro" placeholder="Filtrar por nome ou RA..." />
+      <div class="lista-vazia" *ngIf="!alunosFiltrados.length"><p>Nenhum aluno disponível</p></div>
+      <div class="lista-alunos">
+        <div class="aluno-item" *ngFor="let a of alunosFiltrados">
+          <div class="aluno-info">
+            <strong>{{ a.nome }}</strong>
+            <span>RA: {{ a.ra }}</span>
+          </div>
+          <button class="btn-adicionar" (click)="adicionar(a.id)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

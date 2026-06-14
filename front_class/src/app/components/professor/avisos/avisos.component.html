@@ -1,0 +1,22 @@
+<div class="page">
+  <div class="page-header">
+    <div><h1>📢 Avisos</h1><p>Gerencie seus avisos</p></div>
+    <button class="btn-novo" (click)="novo()">+ Novo Aviso</button>
+  </div>
+  <div class="lista-vazia" *ngIf="!avisos.length"><p>Nenhum aviso cadastrado</p></div>
+  <div class="tabela-container" *ngIf="avisos.length">
+    <table class="tabela">
+      <thead><tr><th>Título</th><th>Data Publicação</th><th>Ações</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let a of avisos">
+          <td>{{ a.titulo }}</td>
+          <td>{{ a.data_publicacao | date:'dd/MM/yyyy' }}</td>
+          <td class="acoes">
+            <button class="btn-acao editar" (click)="editar(a.id)">✏️</button>
+            <button class="btn-acao excluir" (click)="excluir(a.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="page">
+  <div class="page-header"><h1>📚 Disciplinas</h1><p>Visualize as disciplinas disponíveis</p></div>
+  <div class="lista-vazia" *ngIf="!disciplinas.length"><p>Nenhuma disciplina cadastrada</p></div>
+  <div class="tabela-container" *ngIf="disciplinas.length">
+    <table class="tabela">
+      <thead><tr><th>Nome</th><th>Descrição</th><th>Carga Horária</th><th>Professor</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let d of disciplinas">
+          <td>{{ d.nome }}</td>
+          <td>{{ d.descricao || '-' }}</td>
+          <td>{{ d.carga_horaria }}h</td>
+          <td>{{ d.professor_nome || '-' }}</td>
+          <td><span class="badge" [class.badge-ativa]="d.status==='Ativa'" [class.badge-inativa]="d.status==='Inativa'">{{ d.status }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

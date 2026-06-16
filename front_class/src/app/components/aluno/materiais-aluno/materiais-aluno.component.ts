@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialService } from '../../../services/material.service';
 
@@ -11,6 +11,16 @@ import { MaterialService } from '../../../services/material.service';
 })
 export class MateriaisAlunoComponent implements OnInit {
   materiais: any[] = [];
-  constructor(private materialService: MaterialService) {}
-  ngOnInit(): void { this.materialService.getAll().subscribe({ next: (d) => this.materiais = d }); }
+
+  constructor(
+    private materialService: MaterialService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.materialService.getAll().subscribe(data => {
+      this.materiais = data;
+      this.cdr.detectChanges();
+    });
+  }
 }

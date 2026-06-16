@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TurmaService } from '../../../services/turma.service';
 
@@ -11,6 +11,16 @@ import { TurmaService } from '../../../services/turma.service';
 })
 export class TurmasAlunoComponent implements OnInit {
   turmas: any[] = [];
-  constructor(private turmaService: TurmaService) {}
-  ngOnInit(): void { this.turmaService.getAll().subscribe({ next: (d) => this.turmas = d }); }
+
+  constructor(
+    private turmaService: TurmaService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.turmaService.getAll().subscribe(data => {
+      this.turmas = data;
+      this.cdr.detectChanges();
+    });
+  }
 }

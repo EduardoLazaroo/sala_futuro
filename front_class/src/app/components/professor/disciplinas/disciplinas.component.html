@@ -3,8 +3,12 @@
     <div><h1>📚 Disciplinas</h1><p>Gerencie suas disciplinas</p></div>
     <button class="btn-novo" (click)="novo()">+ Nova Disciplina</button>
   </div>
-  <div class="lista-vazia" *ngIf="!disciplinas.length"><p>Nenhuma disciplina cadastrada</p></div>
-  <div class="tabela-container" *ngIf="disciplinas.length">
+
+  <div class="loading" *ngIf="loading"><p>Carregando...</p></div>
+
+  <div class="lista-vazia" *ngIf="!loading && !disciplinas.length"><p>Nenhuma disciplina cadastrada</p></div>
+
+  <div class="tabela-container" *ngIf="!loading && disciplinas.length">
     <table class="tabela">
       <thead><tr><th>Nome</th><th>Carga Horária</th><th>Status</th><th>Professor</th><th>Ações</th></tr></thead>
       <tbody>

@@ -3,8 +3,12 @@
     <div><h1>👥 Turmas</h1><p>Gerencie suas turmas</p></div>
     <button class="btn-novo" (click)="novo()">+ Nova Turma</button>
   </div>
-  <div class="lista-vazia" *ngIf="!turmas.length"><p>Nenhuma turma cadastrada</p></div>
-  <div class="tabela-container" *ngIf="turmas.length">
+
+  <div class="loading" *ngIf="loading"><p>Carregando...</p></div>
+
+  <div class="lista-vazia" *ngIf="!loading && !turmas.length"><p>Nenhuma turma cadastrada</p></div>
+
+  <div class="tabela-container" *ngIf="!loading && turmas.length">
     <table class="tabela">
       <thead><tr><th>Nome</th><th>Descrição</th><th>Status</th><th>Alunos</th><th>Ações</th></tr></thead>
       <tbody>

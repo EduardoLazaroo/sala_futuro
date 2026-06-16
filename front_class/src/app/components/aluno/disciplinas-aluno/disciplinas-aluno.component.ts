@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DisciplinaService } from '../../../services/disciplina.service';
 
@@ -11,6 +11,16 @@ import { DisciplinaService } from '../../../services/disciplina.service';
 })
 export class DisciplinasAlunoComponent implements OnInit {
   disciplinas: any[] = [];
-  constructor(private disciplinaService: DisciplinaService) {}
-  ngOnInit(): void { this.disciplinaService.getAll().subscribe({ next: (d) => this.disciplinas = d }); }
+
+  constructor(
+    private disciplinaService: DisciplinaService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.disciplinaService.getAll().subscribe(data => {
+      this.disciplinas = data;
+      this.cdr.detectChanges();
+    });
+  }
 }

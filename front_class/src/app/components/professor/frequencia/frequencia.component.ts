@@ -33,7 +33,16 @@ export class FrequenciaComponent implements OnInit {
   }
 
   carregar(): void {
-    this.turmaService.getFrequencia(this.turmaId).subscribe({ next: (d) => this.frequencias = d });
+    this.turmaService.getFrequencia(this.turmaId).subscribe({
+      next: (d) => {
+        console.log('Frequências carregadas:', d);
+        this.frequencias = d;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar frequências:', err);
+        alert('Erro ao carregar frequências. Verifique se o backend está rodando.');
+      }
+    });
   }
 
   registrarPresenca(alunoId: number, presente: boolean): void {

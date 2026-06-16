@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EventoService } from '../../../services/evento.service';
-import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-eventos',
@@ -16,18 +15,14 @@ export class EventosComponent implements OnInit {
 
   constructor(
     private eventoService: EventoService,
-    private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.carregar();
-  }
-
-  carregar(): void {
-    this.eventoService.getAll().subscribe({
-      next: (data) => this.eventos = data,
-      error: (err) => console.error(err)
+    this.eventoService.getAll().subscribe(data => {
+      this.eventos = data;
+      this.cdr.detectChanges();
     });
   }
 
@@ -36,12 +31,12 @@ export class EventosComponent implements OnInit {
   }
 
   editar(id: number): void {
-    this.router.navigate([`/professor/eventos/editar/${id}`]);
+    this.router.navigate(['/professor/eventos/editar', id]);
   }
 
   excluir(id: number): void {
-    if (confirm('Deseja realmente excluir este evento?')) {
-      this.eventoService.delete(id).subscribe({ next: () => this.carregar() });
+    if (confirm('Deseja excluir este evento?')) {
+      this.eventoService.delete(id).subscribe(() => this.ngOnInit());
     }
   }
 }

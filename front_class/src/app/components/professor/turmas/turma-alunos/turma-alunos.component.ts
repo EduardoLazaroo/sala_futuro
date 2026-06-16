@@ -32,10 +32,24 @@ export class TurmaAlunosComponent implements OnInit {
   }
 
   carregarAlunos(): void {
-    this.turmaService.getAlunos(this.turmaId).subscribe({ next: (d) => this.alunosMatriculados = d });
-    this.alunoService.getAll().subscribe({ next: (d) => {
-      this.alunosDisponiveis = d.filter((a: any) => !this.alunosMatriculados.find((m: any) => m.id === a.id));
-    }});
+    this.turmaService.getAlunos(this.turmaId).subscribe({
+      next: (d) => {
+        console.log('Alunos matriculados:', d);
+        this.alunosMatriculados = d;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar alunos matriculados:', err);
+      }
+    });
+    this.alunoService.getAll().subscribe({
+      next: (d) => {
+        console.log('Alunos disponíveis:', d);
+        this.alunosDisponiveis = d.filter((a: any) => !this.alunosMatriculados.find((m: any) => m.id === a.id));
+      },
+      error: (err) => {
+        console.error('Erro ao carregar alunos disponíveis:', err);
+      }
+    });
   }
 
   adicionar(alunoId: number): void {

@@ -43,7 +43,16 @@ export class NotasComponent implements OnInit {
   }
 
   carregar(): void {
-    this.notaService.getAll(this.turmaId).subscribe({ next: (d) => this.notas = d });
+    this.notaService.getAll(this.turmaId).subscribe({
+      next: (d) => {
+        console.log('Notas carregadas:', d);
+        this.notas = d;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar notas:', err);
+        alert('Erro ao carregar notas. Verifique se o backend está rodando.');
+      }
+    });
   }
 
   salvar(): void {

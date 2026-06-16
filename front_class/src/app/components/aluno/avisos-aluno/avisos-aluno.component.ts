@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AvisoService } from '../../../services/aviso.service';
 
@@ -11,6 +11,16 @@ import { AvisoService } from '../../../services/aviso.service';
 })
 export class AvisosAlunoComponent implements OnInit {
   avisos: any[] = [];
-  constructor(private avisoService: AvisoService) {}
-  ngOnInit(): void { this.avisoService.getAll().subscribe({ next: (d) => this.avisos = d }); }
+
+  constructor(
+    private avisoService: AvisoService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.avisoService.getAll().subscribe(data => {
+      this.avisos = data;
+      this.cdr.detectChanges();
+    });
+  }
 }

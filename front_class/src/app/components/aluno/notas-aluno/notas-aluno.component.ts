@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotaService } from '../../../services/nota.service';
 import { AuthService } from '../../../services/auth.service';
@@ -12,8 +12,18 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NotasAlunoComponent implements OnInit {
   notas: any[] = [];
-  constructor(private notaService: NotaService, private authService: AuthService) {}
+
+  constructor(
+    private notaService: NotaService,
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
   ngOnInit(): void {
-    this.notaService.getAll(undefined, this.authService.getUserId()).subscribe({ next: (d) => this.notas = d });
+    const alunoId = this.authService.getUserId();
+    this.notaService.getAll(undefined, alunoId).subscribe(data => {
+      this.notas = data;
+      this.cdr.detectChanges();
+    });
   }
 }

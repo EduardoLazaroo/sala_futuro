@@ -839,6 +839,53 @@ app.get('/dashboard/aluno/:id', async (req, res) => {
 // INICIAR SERVIDOR
 // =============================================
 
-app.listen(PORT, () => {
+// Função para formatar data/hora
+function getTimestamp() {
+  return new Date().toLocaleString('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+    dateStyle: 'short',
+    timeStyle: 'medium'
+  });
+}
+
+const server = app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+  console.log(`📅 Início: ${getTimestamp()}`);
+});
+
+// Tratamento de erro na inicialização
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n❌ ERRO: A porta ${PORT} já está em uso!`);
+    console.error(`   Outro processo está rodando na mesma porta.`);
+    console.error(`   Para resolver:`);
+    console.error(`   1. Feche o outro terminal que está rodando o servidor`);
+    console.error(`   2. Ou use: npx kill-port ${PORT}`);
+  } else {
+    console.error(`\n❌ ERRO ao iniciar servidor:`, err.message);
+  }
+  process.exit(1);
+});
+
+// Mensagem quando o servidor parar
+process.on('SIGINT', () => {
+  console.log(`\n🛑 Servidor parou!`);
+  console.log(`📅 Parou: ${getTimestamp()}`);
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.log(`\n🛑 Servidor parou!`);
+  console.log(`📅 Parou: ${getTimestamp()}`);
+  process.exit(0);
+});
+
+process.on('exit', (code) => {
+  if (code !== 0) {
+    console.log(`\n🛑 Servidor parou com código de erro: ${code}`);
+    console.log(`📅 Parou: ${getTimestamp()}`);
+  } else {
+    console.log(`\n🛑 Servidor parou!`);
+    console.log(`📅 Parou: ${getTimestamp()}`);
+  }
 });

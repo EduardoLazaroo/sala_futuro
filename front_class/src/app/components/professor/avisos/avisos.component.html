@@ -3,8 +3,12 @@
     <div><h1>📢 Avisos</h1><p>Gerencie seus avisos</p></div>
     <button class="btn-novo" (click)="novo()">+ Novo Aviso</button>
   </div>
-  <div class="lista-vazia" *ngIf="!avisos.length"><p>Nenhum aviso cadastrado</p></div>
-  <div class="tabela-container" *ngIf="avisos.length">
+
+  <div class="loading" *ngIf="loading"><p>Carregando...</p></div>
+
+  <div class="lista-vazia" *ngIf="!loading && !avisos.length"><p>Nenhum aviso cadastrado</p></div>
+
+  <div class="tabela-container" *ngIf="!loading && avisos.length">
     <table class="tabela">
       <thead><tr><th>Título</th><th>Data Publicação</th><th>Ações</th></tr></thead>
       <tbody>
